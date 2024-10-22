@@ -1,0 +1,17 @@
+{{template "_template.html" .}}
+
+{{define "head"}}
+    <style>{{.Css}}</style>
+    <style>
+        body {
+            max-width: initial;
+            padding: 16px;
+        }
+    </style>
+{{end}}
+
+{{define "body"}}
+    <h1>{{.Paste.Filename}} - {{.Paste.Size}} bytes <a href="{{.RawUrl}}">raw</a></h1>
+
+    {{.FormattedText}}
+{{end}}

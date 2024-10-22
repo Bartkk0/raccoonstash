@@ -1,0 +1,81 @@
+{{template "_template.html" .}}
+
+{{define "head"}}
+    <script src="/static/script.js" defer></script>
+    <script src="https://livejs.com/live.js"></script>
+{{end}}
+
+{{define "body"}}
+    <h1>=> Raccoon's stash</h1>
+    <h3>Upload file</h3>
+    <form action="/file/upload" method="POST" enctype="multipart/form-data">
+        <label for="fileToken">Token</label>
+        <input type="password" name="token" id="fileToken">
+
+        <label for="filePassword">Password</label>
+        <input type="password" name="password" id="filePassword">
+
+        <label for="expiresFile">Expires in</label>
+        <input type="text" name="expires" id="expiresFile">
+
+        <img src="" alt="" id="filePreview"/>
+
+        <label for="file">File</label>
+        <input type="file" name="file" id="file">
+
+        <input type="submit" value="Upload!">
+    </form>
+    <br>
+    <h3>Upload paste</h3>
+    <form action="/paste/upload" method="POST" enctype="multipart/form-data">
+        <label for="pasteToken">Token</label>
+        <input type="password" name="token" id="pasteToken">
+
+        <label for="filename">Filename</label>
+        <input type="text" name="filename" id="filename" value="paste.txt">
+
+        <label for="pastePassword">Password</label>
+        <input type="password" name="password" id="pastePassword">
+
+        <label for="expiresPaste">Expires in</label>
+        <input type="text" name="expires" id="expiresPaste">
+
+        <label for="language">Language</label>
+        <select name="language" id="language">
+            <option value="">- No highlighting -</option>
+            <option value="auto">- Auto -</option>
+            <optgroup label="Languages">
+                {{range .Languages}}
+                    <option value="{{.}}">{{.}}</option>
+                {{end}}
+            </optgroup>
+        </select>
+
+        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+
+        <input type="submit" value="Upload!">
+    </form>
+    <br>
+    <footer>
+        <table>
+            <tr>
+                <th colspan="3">Stats</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Count</th>
+                <th>Size</th>
+            </tr>
+            <tr>
+                <th>Files</th>
+                <td>{{.Stats.NFiles}}</td>
+                <td>{{.Stats.FilesSize | formatFileSize}}</td>
+            </tr>
+            <tr>
+                <th>Pastes</th>
+                <td>{{.Stats.NPastes}}</td>
+                <td>{{.Stats.PastesSize | formatFileSize}}</td>
+            </tr>
+        </table>
+    </footer>
+{{end}}

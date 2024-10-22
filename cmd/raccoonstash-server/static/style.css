@@ -1,0 +1,68 @@
+html{
+    background: #111;
+    color: white;
+    font-family: monospace;
+}
+
+body{
+    max-width: 600px;
+    margin: auto;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 4px;
+}
+
+input, textarea, select {
+    appearance: none;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 2px;
+    font-family: monospace;
+}
+
+option, optgroup{
+    appearance: initial;
+    color: white;
+    background: #111111;
+}
+
+input[type=submit]{
+    margin-top: 8px;
+    padding: 2px 12px;
+    grid-column: span 2;
+}
+
+input[type=submit]:hover{
+    border-color: white;
+}
+
+textarea{
+    grid-column: span 2;
+    resize: vertical;
+}
+
+#filePreview{
+    grid-column: span 2;
+    max-width: 600px;
+    max-height: 300px;
+    margin: auto;
+}
+
+pre {
+    text-align: left;
+    padding: 8px;''
+}
+
+table{
+    border-collapse: collapse;
+    margin: auto;
+}
+
+td,th{
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 4px;
+}
